@@ -8,13 +8,13 @@ namespace ScriptureJournal_Cole.Models
     {
         public int ID { get; set; }
 
-        [RegularExpression(@"[0-9A-Za-z&]")]
+        //[RegularExpression(@"[0-9A-Za-z&]")]
         [StringLength(20, MinimumLength = 3)]
         [Required]
         public string Book { get; set; }
 
         [Display(Name = "Chapter & Verse")]
-        [RegularExpression(@"[0-9:,]")]
+        //[RegularExpression(@"[0-9:,]")]
         [Required]
         public string ChapterVerse { get; set; }
 
