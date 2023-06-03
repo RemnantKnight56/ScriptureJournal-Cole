@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace RazorPagesMovie_Cole.Migrations
+namespace ScriptureJournal_Cole.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

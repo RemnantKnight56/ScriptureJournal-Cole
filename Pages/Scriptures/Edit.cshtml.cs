@@ -6,36 +6,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using RazorPagesMovie_Cole.Data;
-using RazorPagesMovie_Cole.Models;
+using ScriptureJournal_Cole.Data;
+using ScriptureJournal_Cole.Models;
 
-namespace RazorPagesMovie_Cole.Pages.Movies
+namespace ScriptureJournal_Cole.Pages.Scriptures
 {
     public class EditModel : PageModel
     {
-        private readonly RazorPagesMovie_Cole.Data.RazorPagesMovie_ColeContext _context;
+        private readonly ScriptureJournal_Cole.Data.ScriptureJournal_ColeContext _context;
 
-        public EditModel(RazorPagesMovie_Cole.Data.RazorPagesMovie_ColeContext context)
+        public EditModel(ScriptureJournal_Cole.Data.ScriptureJournal_ColeContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Movie Movie { get; set; } = default!;
+        public Scripture Scripture { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Movie == null)
+            if (id == null || _context.Scripture == null)
             {
                 return NotFound();
             }
 
-            var movie =  await _context.Movie.FirstOrDefaultAsync(m => m.ID == id);
+            var movie =  await _context.Scripture.FirstOrDefaultAsync(m => m.ID == id);
             if (movie == null)
             {
                 return NotFound();
             }
-            Movie = movie;
+            Scripture = movie;
+            Scripture.DateAdded = DateTime.Now;
+
             return Page();
         }
 
@@ -48,7 +50,7 @@ namespace RazorPagesMovie_Cole.Pages.Movies
                 return Page();
             }
 
-            _context.Attach(Movie).State = EntityState.Modified;
+            _context.Attach(Scripture).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +58,7 @@ namespace RazorPagesMovie_Cole.Pages.Movies
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MovieExists(Movie.ID))
+                if (!ScriptureExists(Scripture.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +71,9 @@ namespace RazorPagesMovie_Cole.Pages.Movies
             return RedirectToPage("./Index");
         }
 
-        private bool MovieExists(int id)
+        private bool ScriptureExists(int id)
         {
-          return (_context.Movie?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Scripture?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

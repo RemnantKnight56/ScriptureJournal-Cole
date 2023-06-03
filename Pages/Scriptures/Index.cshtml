@@ -1,0 +1,74 @@
+﻿@page
+@model ScriptureJournal_Cole.Pages.Scriptures.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        <select asp-for="BookType" asp-items="Model.Books">
+            <option value="">All</option>
+        </select>
+
+        Note Search: <input type="text" asp-for="SearchString" />
+
+        <select asp-for="FilterType">
+            <option value="">N/A</option>
+            <option value="Book Down">Book A-Z</option>
+            <option value="Book Up">Book Z-A</option>
+            <option value="Date Down">Date Newest</option>
+            <option value="Date Up">Date Oldest</option>
+        </select>
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].Book)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].ChapterVerse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scripture[0].DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Scripture) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChapterVerse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

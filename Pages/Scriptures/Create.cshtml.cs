@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using RazorPagesMovie_Cole.Data;
-using RazorPagesMovie_Cole.Models;
+using ScriptureJournal_Cole.Data;
+using ScriptureJournal_Cole.Models;
 
-namespace RazorPagesMovie_Cole.Pages.Movies
+namespace ScriptureJournal_Cole.Pages.Scriptures
 {
     public class CreateModel : PageModel
     {
-        private readonly RazorPagesMovie_Cole.Data.RazorPagesMovie_ColeContext _context;
+        private readonly ScriptureJournal_Cole.Data.ScriptureJournal_ColeContext _context;
 
-        public CreateModel(RazorPagesMovie_Cole.Data.RazorPagesMovie_ColeContext context)
+        public CreateModel(ScriptureJournal_Cole.Data.ScriptureJournal_ColeContext context)
         {
             _context = context;
         }
@@ -25,18 +25,19 @@ namespace RazorPagesMovie_Cole.Pages.Movies
         }
 
         [BindProperty]
-        public Movie Movie { get; set; } = default!;
+        public Scripture Scripture { get; set; } = default!;
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Movie == null || Movie == null)
+          if (!ModelState.IsValid || _context.Scripture == null || Scripture == null)
             {
                 return Page();
             }
 
-            _context.Movie.Add(Movie);
+            Scripture.DateAdded = DateTime.Now;
+            _context.Scripture.Add(Scripture);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

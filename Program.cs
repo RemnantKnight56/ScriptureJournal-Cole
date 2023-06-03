@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RazorPagesMovie_Cole.Data;
-using RazorPagesMovie_Cole.Models;
+using ScriptureJournal_Cole.Data;
+using ScriptureJournal_Cole.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<RazorPagesMovie_ColeContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPagesMovie_ColeContext") ?? throw new InvalidOperationException("Connection string 'RazorPagesMovie_ColeContext' not found.")));
+builder.Services.AddDbContext<ScriptureJournal_ColeContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ScriptureJournal_ColeContext") ?? throw new InvalidOperationException("Connection string 'ScriptureJournal_ColeContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

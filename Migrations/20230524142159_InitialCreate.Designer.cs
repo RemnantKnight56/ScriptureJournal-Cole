@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RazorPagesMovie_Cole.Data;
+using ScriptureJournal_Cole.Data;
 
 #nullable disable
 
-namespace RazorPagesMovie_Cole.Migrations
+namespace ScriptureJournal_Cole.Migrations
 {
-    [DbContext(typeof(RazorPagesMovie_ColeContext))]
+    [DbContext(typeof(ScriptureJournal_ColeContext))]
     [Migration("20230524142159_InitialCreate")]
     partial class InitialCreate
     {

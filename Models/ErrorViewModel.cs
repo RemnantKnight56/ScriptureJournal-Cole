@@ -1,4 +1,4 @@
-namespace RazorPagesMovie_Cole.Models
+namespace ScriptureJournal_Cole.Models
 {
     public class ErrorViewModel
     {

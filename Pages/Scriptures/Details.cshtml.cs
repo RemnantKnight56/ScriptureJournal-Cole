@@ -5,37 +5,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using RazorPagesMovie_Cole.Data;
-using RazorPagesMovie_Cole.Models;
+using ScriptureJournal_Cole.Data;
+using ScriptureJournal_Cole.Models;
 
-namespace RazorPagesMovie_Cole.Pages.Movies
+namespace ScriptureJournal_Cole.Pages.Scriptures
 {
     public class DetailsModel : PageModel
     {
-        private readonly RazorPagesMovie_Cole.Data.RazorPagesMovie_ColeContext _context;
+        private readonly ScriptureJournal_Cole.Data.ScriptureJournal_ColeContext _context;
 
-        public DetailsModel(RazorPagesMovie_Cole.Data.RazorPagesMovie_ColeContext context)
+        public DetailsModel(ScriptureJournal_Cole.Data.ScriptureJournal_ColeContext context)
         {
             _context = context;
         }
 
-      public Movie Movie { get; set; } = default!; 
+      public Scripture Scriptures { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Movie == null)
+            if (id == null || _context.Scripture == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.ID == id);
+            var movie = await _context.Scripture.FirstOrDefaultAsync(m => m.ID == id);
             if (movie == null)
             {
                 return NotFound();
             }
             else 
             {
-                Movie = movie;
+                Scriptures = movie;
             }
             return Page();
         }

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace RazorPagesMovie_Cole.Migrations
+namespace ScriptureJournal_Cole.Migrations
 {
     /// <inheritdoc />
     public partial class New_DataAnnotations : Migration

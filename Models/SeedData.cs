@@ -1,62 +1,58 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RazorPagesMovie_Cole.Data;
+using ScriptureJournal_Cole.Data;
 
-namespace RazorPagesMovie_Cole.Models
+namespace ScriptureJournal_Cole.Models
 {
     public static class SeedData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new RazorPagesMovie_ColeContext(
+            using (var context = new ScriptureJournal_ColeContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<RazorPagesMovie_ColeContext>>()))
+                    DbContextOptions<ScriptureJournal_ColeContext>>()))
             {
-                if (context == null || context.Movie == null)
+                if (context == null || context.Scripture == null)
                 {
-                    throw new ArgumentNullException("Null RazorPagesMovieContext");
+                    throw new ArgumentNullException("Null ScriptureJournalContext");
                 }
 
                 // Look for any movies.
-                if (context.Movie.Any())
+                if (context.Scripture.Any())
                 {
                     return;   // DB has been seeded
                 }
 
-                context.Movie.AddRange(
-                    new Movie
+                context.Scripture.AddRange(
+                    new Scripture
                     {
-                        Title = "When Harry Met Sally",
-                        ReleaseDate = DateTime.Parse("1989-2-12"),
-                        Genre = "Romantic Comedy",
-                        Price = 7.99M,
-                        Rating = "R"
+                        Book = "Genesis",
+                        ChapterVerse = "5:11",
+                        DateAdded = DateTime.Parse("2021-2-12"),
+                        Note = "N/A"
                     },
 
-                    new Movie
+                    new Scripture
                     {
-                        Title = "Ghostbusters ",
-                        ReleaseDate = DateTime.Parse("1984-3-13"),
-                        Genre = "Comedy",
-                        Price = 8.99M,
-                        Rating = "G"
+                        Book = "1 Nephi",
+                        ChapterVerse = "3:18",
+                        DateAdded = DateTime.Parse("2022-5-30"),
+                        Note = "This is a test"
                     },
 
-                    new Movie
+                    new Scripture
                     {
-                        Title = "Ghostbusters 2",
-                        ReleaseDate = DateTime.Parse("1986-2-23"),
-                        Genre = "Comedy",
-                        Price = 9.99M, 
-                        Rating = "G"
+                        Book = "Matthew",
+                        ChapterVerse = "12:24",
+                        DateAdded = DateTime.Parse("2020-11-26"),
+                        Note = "Hello, test!"
                     },
 
-                    new Movie
+                    new Scripture
                     {
-                        Title = "Rio Bravo",
-                        ReleaseDate = DateTime.Parse("1959-4-15"),
-                        Genre = "Western",
-                        Price = 3.99M, 
-                        Rating = "NA"
+                        Book = "D&C",
+                        ChapterVerse = "75:5",
+                        DateAdded = DateTime.Parse("2022-12-4"),
+                        Note = "No more tests!"
                     }
                 );
                 context.SaveChanges();

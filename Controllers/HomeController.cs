@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RazorPagesMovie_Cole.Models;
+using ScriptureJournal_Cole.Models;
 using System.Diagnostics;
 
-namespace RazorPagesMovie_Cole.Controllers
+namespace ScriptureJournal_Cole.Controllers
 {
     public class HomeController : Controller
     {

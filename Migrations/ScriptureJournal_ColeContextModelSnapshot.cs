@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RazorPagesMovie_Cole.Data;
+using ScriptureJournal_Cole.Data;
 
 #nullable disable
 
-namespace RazorPagesMovie_Cole.Migrations
+namespace ScriptureJournal_Cole.Migrations
 {
-    [DbContext(typeof(RazorPagesMovie_ColeContext))]
-    partial class RazorPagesMovie_ColeContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ScriptureJournal_ColeContext))]
+    partial class ScriptureJournal_ColeContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
